@@ -1,10 +1,3 @@
-locals {
-  module_source = lookup({
-    "dev" = "./modules_dev",
-    "qa"  = "./modules_qa",
-    "uat" = "./modules_uat",
-  "prod" = "./modules_prod" }, var.environment, "./modules_dev")
-}
 
 data "azurerm_billing_enrollment_account_scope" "example" {
   billing_account_name    = var.billing_account_name
