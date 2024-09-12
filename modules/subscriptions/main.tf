@@ -1,9 +1,9 @@
 locals {
-  module_source = lookup({ 
-    "dev" = "./modules_dev", 
-    "qa" = "./modules_qa", 
+  module_source = lookup({
+    "dev" = "./modules_dev",
+    "qa"  = "./modules_qa",
     "uat" = "./modules_uat",
-    "prod" = "./modules_prod"}, var.environment, "./modules_dev")
+  "prod" = "./modules_prod" }, var.environment, "./modules_dev")
 }
 
 data "azurerm_billing_enrollment_account_scope" "example" {
@@ -18,5 +18,5 @@ resource "azurerm_subscription" "example" {
 
 module "azure_services" {
   source = local.module_source
-  tags = var.mandatory_tags
+  tags   = var.mandatory_tags
 }
